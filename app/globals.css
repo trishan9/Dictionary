@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+    height: 100%;
+}
+
+@layer base {
+    :root {
+        /* Brand Colors */
+        --brand-blue: #1961ED;
+
+        /* Background Colors */
+        --background-primary: #F1F4F7;
+
+        /* Foreground Colors */
+        --foreground-primary: #000000;
+
+        /* Border Colors */
+        --border-primary: #CED9E3;
+
+        /* Transparency Colors */
+        --blue-transparent: #1961ED1A;
+
+        /* Box Shadow */
+        --blue-shadow: 0px 0px 0px 3px var(--blue-transparent)
+    }
+}
