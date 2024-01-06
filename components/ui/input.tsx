@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { IInputProps } from "@/types";
 
 const Input = (props: IInputProps) => {
-  const { className, label, Icon, register, ...rest } = props;
+  const { className, label, Icon, register, spinner, ...rest } = props;
 
   return (
     <div className="flex flex-col items-start gap-1">
@@ -27,7 +27,7 @@ const Input = (props: IInputProps) => {
           <Icon
             className={cn(
               "absolute left-0 ml-3 w-5 h-5",
-              rest.spinner && "animate-spin"
+              spinner && "animate-spin"
             )}
           />
         )}

@@ -3,8 +3,8 @@
 import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Loader2, Search } from "lucide-react";
-import { Input } from "@/components/ui";
 import { WordDataContext } from "@/contexts/word-data-context";
+import { Input } from "@/components/ui";
 
 type Inputs = {
   query: string;
@@ -13,22 +13,24 @@ type Inputs = {
 const SearchBar = () => {
   const { register, handleSubmit } = useForm<Inputs>();
   const {
-    states: { isLoading },
-    actions: { getWordData },
+    states: { isLoading, wordData },
+    actions: { getWordData, setActiveTabIndex },
   } = useContext(WordDataContext);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    setActiveTabIndex(0);
     getWordData(data.query);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
       <Input
         register={register("query")}
         type="text"
         Icon={isLoading ? Loader2 : Search}
         spinner={isLoading}
         disabled={isLoading}
+        defaultValue={wordData?.word}
       />
     </form>
   );

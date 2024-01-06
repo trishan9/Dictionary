@@ -7,12 +7,13 @@ import type { LayoutProps, TWordData, TWordDataContext } from "@/types";
 
 //@ts-ignore
 export const WordDataContext = createContext<TWordDataContext>({});
-const API_BASE_URL = "https://api.dictionaryapi.dev/api/v2/entries/en";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const WordDataContextProvider = ({ children }: LayoutProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [wordData, setWordData] = useState<TWordData>();
+  const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
 
   const getWordDataMutation = useMutation({
     mutationFn: async (query: string) => {
@@ -23,6 +24,7 @@ const WordDataContextProvider = ({ children }: LayoutProps) => {
         setWordData(data.data[0]);
       } catch (error) {
         setIsError(true);
+        setWordData(undefined);
       } finally {
         setIsLoading(false);
       }
@@ -33,8 +35,8 @@ const WordDataContextProvider = ({ children }: LayoutProps) => {
     getWordDataMutation.mutate(query);
   };
 
-  const states = { isLoading, isError, wordData };
-  const actions = { getWordData };
+  const states = { isLoading, isError, wordData, activeTabIndex };
+  const actions = { getWordData, setActiveTabIndex };
 
   return (
     <WordDataContext.Provider value={{ states, actions }}>

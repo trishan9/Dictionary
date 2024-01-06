@@ -32,6 +32,16 @@ export type TWordDataContext = {
     isLoading: boolean;
     isError: boolean;
     wordData: TWordData | undefined;
+    activeTabIndex: number;
   };
-  actions: { getWordData: (query: string) => void };
+  actions: {
+    getWordData: (query: string) => void;
+    setActiveTabIndex: (index: number) => void;
+  };
+};
+
+export type TabsProps = {
+  tabs: any[];
+  label: string;
+  handleClick?: () => void;
 };
