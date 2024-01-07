@@ -1,11 +1,11 @@
-import React from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 
 export type LayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-export interface IInputProps extends React.ComponentPropsWithoutRef<"input"> {
+export interface IInputProps extends ComponentPropsWithoutRef<"input"> {
   label?: string;
   Icon?: LucideIcon;
   register?: {};
