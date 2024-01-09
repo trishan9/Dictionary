@@ -7,7 +7,7 @@ const DashboardLayout = ({ children }: LayoutProps) => {
     <Fragment>
       <NavBar />
 
-      <main className="p-6">{children}</main>
+      <main className="px-5 py-0">{children}</main>
     </Fragment>
   );
 };

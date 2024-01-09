@@ -1,4 +1,4 @@
-import { SearchBar, WordData, MainLogo } from "@/components";
+import { SearchBar, WordData } from "@/components";
 
 const HomePage = () => {
   return (
@@ -6,8 +6,6 @@ const HomePage = () => {
       <SearchBar />
 
       <WordData />
-
-      <MainLogo />
     </section>
   );
 };
